@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroVision</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <script type="text/javascript">
+        var _iub = _iub || [];
+        _iub.csConfiguration = {"siteId":3815074,"cookiePolicyId":69035962,"lang":"it","storage":{"useSiteId":true}};
+        </script>
+        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3815074.js"></script>
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+    <header>
+        <nav>
+            <!------------------------------>
+            <a href="/html/index.html">
+                <img src="/image/Z_Logo.png" alt="Electrovision Logo" class="logo">
+            </a>
+            <!------------------------------>
+            <ul class="navbar">
+                <li><a href="/html/index.html">HOME</a></li>
+                <li><a href="/html/prodotti.html">PRODOTTI</a></li>
+                <li><a href="/html/preventivi.html">PREVENTIVI</a></li>
+                <li><a href="/html/pagamenti.html">PAGAMENTI</a></li>
+                <li><a href="/html/resi.html">RESI</a></li>
+                <li><a href="/html/contattaci.html">CONTATTACI</a></li>
+            </ul>
+        </nav>
+        <!------------------------------>
+        <div class="header-flex">
+            <div class="search-bar-container">
+                <form action="/search" method="GET" class="search-form">
+                    <input type="text" name="query" class="search-input" placeholder="Cerca prodotti...">
+                    <button type="submit" class="search-button">Cerca</button>
+                </form>
+            </div>
+        <!------------------------------>
+        <div id="account-section">
+            <a href="/html/login.html">
+                <button id="account-btn">
+                    <img src="/image/User.jpg" alt="Icona utente" id="account-icon" width="20" height="20"> Il mio account
+                </button>
+            </a>
+        </div>
+    </header> 
+    <!------------------------------>
+    <div class="product-view-controls">
+        <span>Visualizza come:</span>
+        <button id="grid-view" class="view-btn active">Griglia</button>
+        <button id="list-view" class="view-btn">Lista</button>
+    </div>
+    <!--------------------------->
+    <main class="container">
+    <aside class="sidebar">
+        <h2>Categorie</h2>
+        <ul class="category-list">
+            <li>
+                <label class="category-label" for="category1">
+                    <input type="checkbox" id="category1" class="category-checkbox">
+                    <span class="circle"></span>
+                    <a href="/html/videosorveglianza.html" class="category-link">Videosorveglianza</a>
+                </label>
+            </li>
+            <li>
+                <label class="category-label" for="category2">
+                    <input type="checkbox" id="category2" class="category-checkbox">
+                    <span class="circle"></span>
+                    <a href="/html/antifurti.html" class="category-link">Antifurti</a>
+                </label>
+            </li>
+            <li>
+                <label class="category-label" for="category3">
+                    <input type="checkbox" id="category3" class="category-checkbox">
+                    <span class="circle"></span>
+                    <a href="/html/elettrico.html" class="category-link">Elettrico</a>
+                </label>
+            </li>
+            <li>
+                <label class="category-label" for="category4">
+                    <input type="checkbox" id="category4" class="category-checkbox">
+                    <span class="circle"></span>
+                    <a href="/html/citofonia.html" class="category-link">Citofonia</a>
+                </label>
+            </li>
+            <li>
+                <label class="category-label" for="category5">
+                    <input type="checkbox" id="category5" class="category-checkbox">
+                    <span class="circle"></span>
+                    <a href="/html/illuminazione.html" class="category-link">Illuminazione</a>
+                </label>
+            </li>
+            <li>
+                <label class="category-label" for="category6">
+                    <input type="checkbox" id="category6" class="category-checkbox">
+                    <span class="circle"></span>
+                    <a href="/html/domotica.html" class="category-link">Domotica</a>
+                </label>
+            </li>
+        </ul>
+    </aside>
+    <!------------------------------>
+    <div id="product-container" class="grid-view">
+        <div class="product-item">
+            <img src="/image/prod1.jpg" alt="Prodotto 1">
+            <h3>Prodotto 1</h3>
+            <p>Descrizione breve del prodotto 1</p>
+        </div>
+        <div class="product-item">
+            <img src="/image/prod2.jpg" alt="Prodotto 2">
+            <h3>Prodotto 2</h3>
+            <p>Descrizione breve del prodotto 2</p>
+        </div>
+        <div class="product-item">
+            <img src="/image/prod3.jpg" alt="Prodotto 3">
+            <h3>Prodotto 3</h3>
+            <p>Descrizione breve del prodotto 3</p>
+        </div>
+    </div>
+    <!------------------------------>
+    <script src="/javascript/prodotti.js"></script> 
+</body>
+</html>

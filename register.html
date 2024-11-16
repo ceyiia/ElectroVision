@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroVision</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+    <style>
+        
+        .recaptcha-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+       
+        #recaptchaError {
+            color: red;
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var _iub = _iub || [];
+        _iub.csConfiguration = {"siteId":3815074,"cookiePolicyId":69035962,"lang":"it","storage":{"useSiteId":true}};
+        </script>
+        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3815074.js"></script>
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+    <header>
+        <nav>
+            <a href="/html/index.html">
+                <img src="/image/Z_Logo.png" alt="Electrovision Logo" class="logo">
+            </a>
+            <ul class="navbar">
+                <li><a href="/html/index.html">HOME</a></li>
+                <li><a href="/html/prodotti.html">PRODOTTI</a></li>
+                <li><a href="/html/preventivi.html">PREVENTIVI</a></li>
+                <li><a href="/html/pagamenti.html">PAGAMENTI</a></li>
+                <li><a href="/html/resi.html">RESI</a></li>
+                <li><a href="/html/contattaci.html">CONTATTACI</a></li>
+            </ul>
+        </nav>
+
+        <div id="account-section">
+            <a href="/html/login.html">
+                <button id="account-btn">
+                    <img src="/image/User.jpg" alt="Icona utente" id="account-icon" width="20" height="20"> Il mio account
+                </button>
+            </a>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <form id="registerForm" action="register_process.php" method="POST" onsubmit="return controllaForm()">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="cognome">Cognome:</label>
+                <input type="text" id="cognome" name="cognome" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="data_nascita">Data di nascita:</label>
+                <input type="date" id="data_nascita" name="data_nascita" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="tipo_utente">Tipo di utente:</label>
+                <select id="tipo_utente" name="tipo_utente" required onchange="mostraCampiAggiuntivi()">
+                    <option value="privato">Privato</option>
+                    <option value="azienda">Azienda</option>
+                    <option value="distributore">Distributore</option>
+                    <option value="installatore">Installatore</option>
+                    <option value="altro">Altro</option>
+                </select>
+            </div>
+
+        
+            <div class="form-group" id="ragione_sociale_div" style="display:none;">
+                <label for="ragione_sociale">Ragione Sociale:</label>
+                <input type="text" id="ragione_sociale" name="ragione_sociale">
+            </div>
+
+            <div class="form-group" id="partita_iva_div" style="display:none;">
+                <label for="partita_iva">Partita IVA:</label>
+                <input type="text" id="partita_iva" name="partita_iva" pattern="\d+" title="Inserisci solo numeri" required>
+            </div>
+
+           
+            <div class="form-group" id="altro_div" style="display:none;">
+                <label for="altro_descrizione">Altro:</label>
+                <input type="text" id="altro_descrizione" name="altro_descrizione">
+            </div>
+    
+            <div class="form-group">
+                <label for="telefono">Telefono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+         
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="citta">Città:</label>
+                <input type="text" id="citta" name="citta" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="cap">CAP:</label>
+                <input type="text" id="cap" name="cap" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="nazione">Nazione:</label>
+                <input type="text" id="nazione" name="nazione" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="password_confirm">Conferma Password:</label>
+                <input type="password" id="password_confirm" name="password_confirm" required>
+            </div>
+
+         
+            <p id="passwordError" style="color:red; display:none;">Le password non coincidono, riprova.</p>
+
+          
+            <div class="recaptcha-container">
+                <div class="g-recaptcha" data-sitekey="IL_TUO_SITE_KEY"></div>
+            </div>
+
+            
+            <p id="recaptchaError">Per favore completa il reCAPTCHA.</p>
+            
+           <p><button type="submit">Registrati</button></p>
+        </form>
+    </div>
+
+    <script src="/javascript/register.js"></script> <!-- Collegamento al file JavaScript -->
+    <script>
+        // Funzione per mostrare i campi aggiuntivi in base al tipo di utente
+        function mostraCampiAggiuntivi() {
+            const tipoUtente = document.getElementById('tipo_utente').value;
+            const ragioneSocialeDiv = document.getElementById('ragione_sociale_div');
+            const partitaIvaDiv = document.getElementById('partita_iva_div');
+            const altroDiv = document.getElementById('altro_div');
+
+            // Nascondi tutti i campi aggiuntivi
+            ragioneSocialeDiv.style.display = 'none';
+            partitaIvaDiv.style.display = 'none';
+            altroDiv.style.display = 'none';
+
+            if (tipoUtente === 'azienda' || tipoUtente === 'distributore' || tipoUtente === 'installatore') {
+                // Mostra i campi "Ragione Sociale" e "Partita IVA"
+                ragioneSocialeDiv.style.display = 'block';
+                partitaIvaDiv.style.display = 'block';
+            } else if (tipoUtente === 'altro') {
+                // Mostra il campo "Altro"
+                altroDiv.style.display = 'block';
+            }
+        }
+
+        // Funzione per controllare se le password coincidono e se il reCAPTCHA è stato completato
+        function controllaForm() {
+            const password = document.getElementById('password').value;
+            const passwordConfirm = document.getElementById('password_confirm').value;
+            const errorElement = document.getElementById('passwordError');
+            const recaptchaResponse = grecaptcha.getResponse();
+            const recaptchaErrorElement = document.getElementById('recaptchaError');
+
+            // Controllo password
+            if (password !== passwordConfirm) {
+                errorElement.style.display = 'block';
+                return false;
+            }
+            errorElement.style.display = 'none';
+
+            // Controllo reCAPTCHA
+            if (recaptchaResponse === "") {
+                recaptchaErrorElement.style.display = 'block';
+                return false; // Impedisce l'invio del form
+            }
+
+            recaptchaErrorElement.style.display = 'none';
+            return true; // Permette l'invio del form
+        }
+    </script>
+
+</body>
+</html>

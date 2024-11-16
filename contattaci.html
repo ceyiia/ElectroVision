@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroVision</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+</head>
+<style>
+    .recaptcha-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    #recaptchaError {
+        color: red;
+        display: none;
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+<body>
+    <script type="text/javascript">
+        var _iub = _iub || [];
+        _iub.csConfiguration = {"siteId":3815074,"cookiePolicyId":69035962,"lang":"it","storage":{"useSiteId":true}};
+        </script>
+        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3815074.js"></script>
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+    <header>
+        <nav>
+            <a href="/html/index.html">
+                <img src="/image/Z_Logo.png" alt="Electrovision Logo" class="logo">
+            </a>
+            <ul class="navbar">
+                <li><a href="/html/index.html">HOME</a></li>
+                <li><a href="/html/prodotti.html">PRODOTTI</a></li>
+                <li><a href="/html/preventivi.html">PREVENTIVI</a></li>
+                <li><a href="/html/pagamenti.html">PAGAMENTI</a></li>
+                <li><a href="/html/resi.html">RESI</a></li>
+                <li><a href="/html/contattaci.html">CONTATTACI</a></li>
+            </ul>
+        </nav>
+
+        <div id="account-section">
+            <a href="/html/login.html">
+                <button id="account-btn">
+                    <img src="/image/User.jpg" alt="Icona utente" id="account-icon" width="20" height="20"> Il mio account
+                </button>
+            </a>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <img src="/image/CONTATTI Logo.png" alt="Contatti" class="image">
+        <form id="registerForm" action="contact_process.php" method="POST" onsubmit="return controllaForm()">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="cognome">Cognome:</label>
+                <input type="text" id="cognome" name="cognome" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_richiesta">Tipo di richiesta:</label>
+                <select id="tipo_richiesta" name="tipo_richiesta" required onchange="mostraCampiAggiuntivi()">
+                    <option value="">Seleziona un'opzione</option>
+                    <option value="prodotti">Prodotti</option>
+                    <option value="resirimborsi">Resi/Rimborsi</option>
+                    <option value="spedizione">Spedizione</option>
+                    <option value="servizi">Servizi</option>
+                    <option value="preventivi">Preventivi</option>
+                    <option value="altro">Altro</option>
+                </select>
+            </div>
+            <div class="form-group" id="altro_div" style="display:none;">
+                <label for="altro_descrizione">Richiesta:</label>
+                <input type="text" id="altro_descrizione" name="altro_descrizione">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+            </div>
+            <div class="form-group">
+                <label for="citta">Città:</label>
+                <input type="text" id="citta" name="citta" required>
+            </div>
+            <div class="form-group">
+                <label for="cap">CAP:</label>
+                <input type="text" id="cap" name="cap" required>
+            </div>
+            <div class="form-group">
+                <label for="nazione">Nazione:</label>
+                <input type="text" id="nazione" name="nazione" required>
+            </div>
+            <div class="form-group">
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia" required>
+            </div>
+
+            <div class="recaptcha-container">
+                <div class="g-recaptcha" data-sitekey="IL_TUO_SITE_KEY"></div>
+            </div>
+            <p id="recaptchaError">Per favore completa il reCAPTCHA.</p>
+            <p><button type="submit">Registrati</button></p>
+        </form>
+    </div>
+
+    <script>
+        
+        function mostraCampiAggiuntivi() {
+            const tipoRichiesta = document.getElementById('tipo_richiesta').value;
+            const altroDiv = document.getElementById('altro_div');
+
+          
+            altroDiv.style.display = 'none';
+
+           
+            if (tipoRichiesta) {
+                altroDiv.style.display = 'block';
+            }
+        }
+
+   
+        function controllaForm() {
+            const recaptchaResponse = grecaptcha.getResponse();
+            const recaptchaErrorElement = document.getElementById('recaptchaError');
+            
+            
+            if (recaptchaResponse === "") {
+                recaptchaErrorElement.style.display = 'block';
+                return false;
+            }
+
+            recaptchaErrorElement.style.display = 'none';
+            return true; 
+        }
+    </script>
+</body>
+</html>
